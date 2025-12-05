@@ -5,8 +5,10 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
-
+  output: 'export',
+  basePath: process.env.NODE_ENV === 'production' ? '/fumadocs-notes' : '',
   images: {
+    unoptimized: true,
     // 正确写法（Next.js 15 最新要求）
     remotePatterns: [
       // 放开所有 https 图片（开发/文档站最方便）
