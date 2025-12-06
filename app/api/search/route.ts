@@ -12,10 +12,4 @@ export { staticGET as GET };
 
 // 配置路由为静态可渲染
 export const dynamic = 'force-static';
-
 export const revalidate = false;
-
-// 为静态导出生成参数，确保/api/search路由被预渲染
-export function generateStaticParams() {
-  return [{}];
-}

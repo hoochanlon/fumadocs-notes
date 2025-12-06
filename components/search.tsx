@@ -28,6 +28,8 @@ export default function DefaultSearchDialog(props: SharedProps) {
     type: 'static',
     initOrama,
     locale,
+    // 在静态导出模式下，使用相对路径，Next.js 的 basePath 会自动处理
+    url: '/api/search',
   });
 
   return (
