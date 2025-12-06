@@ -24,10 +24,14 @@ function initOrama() {
 
 export default function DefaultSearchDialog(props: SharedProps) {
   const { locale } = useI18n(); // (optional) for i18n
+  // 获取 basePath，确保搜索 API 路径正确
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const { search, setSearch, query } = useDocsSearch({
     type: 'static',
     initOrama,
     locale,
+    // 指定搜索索引的 URL，包含 basePath
+    from: `${basePath}/api/search`,
   });
 
   return (

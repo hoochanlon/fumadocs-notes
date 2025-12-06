@@ -15,6 +15,10 @@ const config = {
   basePath,
   // 添加尾部斜杠，有助于静态文件生成
   trailingSlash: true,
+  // 设置环境变量，供客户端使用
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default withMDX(config);
