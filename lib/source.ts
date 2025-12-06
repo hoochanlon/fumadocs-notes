@@ -2,23 +2,21 @@ import { docs } from 'fumadocs-mdx:collections/server';
 import { type InferPageType, loader } from 'fumadocs-core/source';
 import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
 
-// GitHub Pages 子路径配置（仅在构建时使用）
-const basePath = process.env.NODE_ENV === 'production' ? '/fumadocs-notes' : '';
-
 // See https://fumadocs.dev/docs/headless/source-api for more info
+// baseUrl 不需要包含 basePath，Next.js 的 basePath 会自动处理前缀
 export const source = loader({
-  baseUrl: `${basePath}/docs`,
+  baseUrl: '/docs',
   source: docs.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
 });
 
 export function getPageImage(page: InferPageType<typeof source>) {
   const segments = [...page.slugs, 'image.png'];
-  const basePath = process.env.NODE_ENV === 'production' ? '/fumadocs-notes' : '';
 
   return {
     segments,
-    url: `${basePath}/og/docs/${segments.join('/')}`,
+    // Next.js 的 basePath 会自动处理前缀，这里不需要手动添加
+    url: `/og/docs/${segments.join('/')}`,
   };
 }
 
