@@ -27,6 +27,10 @@ export default function Layout({ children }: LayoutProps<'/'>) {
           search={{
             SearchDialog,
           }}
+          theme={{
+            defaultTheme: 'dark', // 设置默认主题为暗色模式
+            enableSystem: false,  // 禁用系统主题检测，始终使用默认主题
+          }}
         >
           {children}
         </RootProvider>

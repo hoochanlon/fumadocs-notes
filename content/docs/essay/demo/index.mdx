@@ -11,6 +11,8 @@ import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { HomeIcon } from 'lucide-react';
+import { GraphView } from '@/components/graph-view';
+import { buildGraph } from '@/lib/build-graph';
 
 
 ## 内联目录
@@ -205,3 +207,7 @@ function calculateTotal(items) {
   return total; // [!code focus]
 }
 ```
+
+## GraphView 
+
+<GraphView graph={buildGraph()} />
