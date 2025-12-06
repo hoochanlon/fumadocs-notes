@@ -13,6 +13,8 @@ const config = {
   // GitHub Pages 子路径配置
   // 在静态导出模式下，basePath 会自动处理所有资源路径
   basePath,
+  // 添加尾部斜杠，有助于静态文件生成
+  trailingSlash: true,
 };
 
 export default withMDX(config);
