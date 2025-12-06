@@ -19,6 +19,18 @@ const config = {
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
+  images: {
+    // 静态导出模式下必须禁用图片优化
+    unoptimized: true,
+    // 正确写法（Next.js 15 最新要求）
+    remotePatterns: [
+      // 放开所有 https 图片（开发/文档站最方便）
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
 };
 
 export default withMDX(config);
