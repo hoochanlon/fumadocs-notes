@@ -1,3 +1,32 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/ocean.css';
 @import 'fumadocs-ui/css/preset.css';
+
+/* 自定义代码块样式 */
+/* 你可以根据需要修改以下样式来改变代码块的外观 */
+
+/* 代码块包装器样式（蓝色边框区域） */
+/* 如果需要自定义样式，可以取消下面的注释并修改值 */
+/*
+.custom-codeblock {
+  border: 2px solid hsl(var(--primary) / 0.3);
+  border-radius: 0.75rem;
+  background: hsl(var(--muted) / 0.2);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+*/
+
+/* 代码块内部代码样式 */
+.custom-codeblock code {
+  background: transparent;
+}
+
+/* 如果需要更明显的蓝色边框，可以使用这个样式 */
+/*
+.custom-codeblock {
+  border: 2px solid #3b82f6;
+  border-radius: 0.5rem;
+  background: hsl(var(--muted) / 0.1);
+  padding: 0.5rem;
+}
+*/
