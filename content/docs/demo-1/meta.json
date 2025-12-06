@@ -1,0 +1,10 @@
+{
+  "title": "栏目-1",
+  "icon": "Rainbow",
+  "root": true,
+  "pages": [
+    "---demo-1---",
+    "index",
+    "test"
+  ]
+}
