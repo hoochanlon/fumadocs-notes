@@ -3,7 +3,6 @@ import {
   DocsBody,
   DocsDescription,
   DocsPage,
-  PageLastUpdate,
   DocsTitle,
 } from 'fumadocs-ui/layouts/notebook/page';
 import { notFound } from 'next/navigation';
@@ -17,16 +16,9 @@ export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
   if (!page) notFound();
 
   const MDX = page.data.body;
-  const lastModifiedRaw = (page.data as { lastModified?: Date | string })
-    .lastModified;
-  const lastModified = lastModifiedRaw ? new Date(lastModifiedRaw) : undefined;
 
   return (
-    <DocsPage
-      toc={page.data.toc}
-      full={page.data.full}
-      tableOfContent={{ style: 'clerk' }}
-    >
+    <DocsPage toc={page.data.toc} full={page.data.full}tableOfContent={{style: 'clerk',}}>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
@@ -37,9 +29,6 @@ export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
           })}
         />
       </DocsBody>
-      {lastModified && (
-        <PageLastUpdate date={lastModified} className="not-prose" />
-      )}
     </DocsPage>
   );
 }

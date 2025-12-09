@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { createMDX } from 'fumadocs-mdx/next';
 
 const withMDX = createMDX();
@@ -5,6 +6,8 @@ const withMDX = createMDX();
 // basePath 必须为空字符串或以斜杠开头的子路径，不能为单独的 "/"
 // 若部署在根域名，保持为空字符串；若部署在子路径（如 /notes），改成对应子路径
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -32,18 +35,10 @@ const config = {
       },
     ],
   },
-  // 开发服务器性能优化
-  ...(process.env.NODE_ENV === 'development' && {
-    // 减少开发时的编译范围
-    experimental: {
-      // 优化 Turbopack 性能（如果使用）
-      turbo: {
-        resolveAlias: {
-          // 可以添加别名优化
-        },
-      },
-    },
-  }),
+  turbopack: {
+    // 显式设置项目根目录，避免因上级锁文件导致的根推断警告
+    root: __dirname,
+  },
 };
 
 export default withMDX(config);

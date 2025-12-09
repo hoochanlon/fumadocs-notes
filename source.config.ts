@@ -4,7 +4,6 @@ import {
   frontmatterSchema,
   metaSchema,
 } from 'fumadocs-mdx/config';
-import lastModified from 'fumadocs-mdx/plugins/last-modified';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import { remarkImage } from 'fumadocs-core/mdx-plugins';
@@ -35,8 +34,6 @@ export const notes = defineDocs({
 });
 
 export default defineConfig({
-  // Enable last modified timestamp injection via git
-  plugins: [lastModified()],
   mdxOptions: {
     remarkPlugins: [
       remarkMath,

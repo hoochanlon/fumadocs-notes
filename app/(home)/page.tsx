@@ -5,8 +5,6 @@ import { ArrowRight, ExternalLink, Github, Book, Code, Brain, Clock, Star,FileTe
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-
-
 export default function HomePage() {
 
   return (
