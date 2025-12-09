@@ -3,9 +3,8 @@ import { createMDX } from 'fumadocs-mdx/next';
 
 const withMDX = createMDX();
 
-// basePath 必须为空字符串或以斜杠开头的子路径，不能为单独的 "/"
-// 若部署在根域名，保持为空字符串；若部署在子路径（如 /notes），改成对应子路径
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+// basePath 置空，使用根路径部署
+const basePath = '';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -20,9 +19,7 @@ const config = {
   // 添加尾部斜杠，有助于静态文件生成
   trailingSlash: true,
   // 设置环境变量，供客户端使用
-  env: {
-    NEXT_PUBLIC_BASE_PATH: basePath,
-  },
+  // 若有需要，可恢复 basePath 并同步 env
   images: {
     // 静态导出模式下必须禁用图片优化
     unoptimized: true,
