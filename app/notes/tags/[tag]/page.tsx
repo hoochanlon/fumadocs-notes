@@ -10,7 +10,16 @@ import Link from 'next/link';
 
 export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
   const params = await props.params;
-  const tagName = decodeURIComponent(params.tag);
+  // 在静态导出模式下，Next.js 会根据 generateStaticParams 生成的文件路径
+  // 自动解码 URL 参数，所以 params.tag 应该已经是解码后的值
+  // 但为了兼容性，我们尝试解码（如果已经是解码后的值，decodeURIComponent 不会改变它）
+  let tagName: string;
+  try {
+    tagName = decodeURIComponent(params.tag);
+  } catch {
+    // 如果解码失败（例如已经是解码后的值），直接使用
+    tagName = params.tag;
+  }
   
   // 获取所有页面
   const allPages = source.getPages();
@@ -144,7 +153,12 @@ export async function generateMetadata(
   props: PageProps<'/notes/tags/[tag]'>,
 ): Promise<Metadata> {
   const params = await props.params;
-  const tagName = decodeURIComponent(params.tag);
+  let tagName: string;
+  try {
+    tagName = decodeURIComponent(params.tag);
+  } catch {
+    tagName = params.tag;
+  }
   
   const allPages = source.getPages();
   const taggedPages = allPages.filter(page => {
