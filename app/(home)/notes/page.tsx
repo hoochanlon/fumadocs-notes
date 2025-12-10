@@ -2,6 +2,7 @@ import { source } from '@/lib/source';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SiteFooter } from '@/components/site-footer';
+import { CalendarDays, Tag as TagIcon, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: '笔记归档',
@@ -72,14 +73,14 @@ export default function NotesArchivePage() {
               href="/notes/essay"
               className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
             >
-              <i className="ri-file-marked-fill"></i>
+              <FileText className="w-4 h-4" />
               返回备忘录
             </Link>
             <Link
               href="/notes/tags"
               className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
             >
-              <i className="fa-solid fa-tags" />
+              <TagIcon className="w-4 h-4" />
               查看所有标签
             </Link>
           </div>
@@ -102,7 +103,7 @@ export default function NotesArchivePage() {
                     <div className="flex items-center gap-3 mb-2 min-h-[20px]">
                       {item.dateLabel && (
                         <span className="inline-flex items-center gap-1.5 text-xs text-fd-muted-foreground">
-                          <i className="fa-solid fa-calendar-day text-fd-muted-foreground/70" />
+                          <CalendarDays className="w-4 h-4 text-fd-muted-foreground/70" />
                           {item.dateLabel}
                         </span>
                       )}

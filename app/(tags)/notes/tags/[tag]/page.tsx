@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SiteFooter } from '@/components/site-footer';
+import { Tag as TagIcon, FileText, CalendarDays, Clock3 } from 'lucide-react';
 
 export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
   const params = await props.params;
@@ -54,14 +55,14 @@ export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
               href="/notes/tags"
               className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
             >
-              <i className="fa-solid fa-tags"></i>
+              <TagIcon className="w-4 h-4" />
               查看所有标签
             </Link>
             <Link
               href="/notes/essay"
               className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
             >
-              <i className="ri-file-marked-fill"></i>
+              <FileText className="w-4 h-4" />
               返回笔记
             </Link>
           </div>
@@ -99,7 +100,7 @@ export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
                     <div className="flex flex-wrap items-center gap-3 text-xs text-fd-muted-foreground pt-3 border-top border-fd-border">
                       {publishedAt && (
                         <span className="inline-flex items-center gap-1.5">
-                          <i className="fa-solid fa-calendar-day text-fd-muted-foreground/60" />
+                          <CalendarDays className="w-4 h-4 text-fd-muted-foreground/60" />
                           {publishedAt.toLocaleDateString('zh-CN')}
                         </span>
                       )}
@@ -107,7 +108,7 @@ export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
                         publishedAt &&
                         lastUpdated.getTime() !== publishedAt.getTime() && (
                           <span className="inline-flex items-center gap-1.5">
-                            <i className="fa-regular fa-clock text-fd-muted-foreground/60" />
+                            <Clock3 className="w-4 h-4 text-fd-muted-foreground/60" />
                             {lastUpdated.toLocaleDateString('zh-CN')}
                           </span>
                         )}

@@ -2,6 +2,7 @@ import { source } from '@/lib/source';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SiteFooter } from '@/components/site-footer';
+import { FileText, Archive, Tag as TagIcon } from 'lucide-react';
 
 export default async function TagsPage() {
   const allPages = source.getPages();
@@ -51,14 +52,14 @@ export default async function TagsPage() {
                 href="/notes/essay"
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
               >
-                <i className="ri-file-marked-fill"></i>
+                <FileText className="w-4 h-4" />
                 返回笔记
               </Link>
               <Link
                 href="/notes"
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
               >
-                <i className="fas fa-box-archive"></i>
+                <Archive className="w-4 h-4" />
                 查看归档
               </Link>
             </div>

@@ -1,6 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/hoochanlon/fonts@main/assets/quicksand/quicksand.light-regular.otf');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css');
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/ocean.css';
 @import 'fumadocs-ui/css/preset.css';
@@ -8,13 +5,13 @@
 
 
 .fd-header__brand {
-  font-family: 'quicksand.light-regular';
+  font-family: var(--font-quicksand), 'Quicksand', 'Inter', 'Helvetica', sans-serif;
   letter-spacing: 0.04em;
 }
 
 /* 精确匹配整个class字符串 */
 a[class="inline-flex items-center gap-2.5 font-semibold"] {
-  font-family: 'quicksand.light-regular';
+  font-family: var(--font-quicksand), 'Quicksand', 'Inter', 'Helvetica', sans-serif;
   font-size: 20px;
 }
 

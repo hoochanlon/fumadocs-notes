@@ -25,6 +25,7 @@ export default function HomePage() {
               fill
               className="object-cover"
               priority
+              fetchPriority="high"
               sizes="(max-width: 768px) 128px, 160px"
             />
           </div>

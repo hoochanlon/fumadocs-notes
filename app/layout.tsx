@@ -3,12 +3,20 @@ import './global.css';
 import SearchDialog from '@/components/search';
 import type { Metadata } from 'next';
 import 'katex/dist/katex.css';
+import { Quicksand } from 'next/font/google';
 
 // 获取 basePath，确保图标路径正确
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const metadataBase = process.env.NODE_ENV === 'production' 
   ? new URL(`https://blog.hoochanlon.moe${basePath}`)
   : new URL('http://localhost:3000');
+
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-quicksand',
+});
 
 export const metadata: Metadata = {
   metadataBase,
@@ -23,8 +31,8 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
-      <body className="flex flex-col min-h-screen antialiased">
+    <html lang="en" suppressHydrationWarning className={`${quicksand.variable} dark`}>
+      <body className={`${quicksand.className} flex flex-col min-h-screen antialiased`}>
         <RootProvider
           search={{
             SearchDialog,

@@ -10,6 +10,7 @@ import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import Link from 'next/link';
+import { CalendarDays, Clock3 } from 'lucide-react';
 
 export default async function Page(props: PageProps<'/notes/[...slug]'>) {
   const params = await props.params;
@@ -48,14 +49,14 @@ export default async function Page(props: PageProps<'/notes/[...slug]'>) {
         <p className="text-[15px] leading-6 text-fd-muted-foreground flex flex-wrap items-center gap-2">
           {publishedAt && (
             <span className="inline-flex items-center gap-1">
-              <i className="fa-solid fa-calendar-day" />
+              <CalendarDays className="w-4 h-4" />
               发布时间：{publishedAt.toLocaleDateString('zh-CN')}
             </span>
           )}
           {publishedAt && lastUpdated && <span className="mx-1">|</span>}
           {lastUpdated && (
             <span className="inline-flex items-center gap-1">
-              <i className="fa-regular fa-clock" />
+              <Clock3 className="w-4 h-4" />
               最近更新：{lastUpdated.toLocaleDateString('zh-CN')}
             </span>
           )}

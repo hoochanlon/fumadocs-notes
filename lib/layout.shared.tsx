@@ -1,4 +1,4 @@
-import { BookIcon } from 'lucide-react';
+import { BookIcon, BookOpen } from 'lucide-react';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 export function baseOptions(): BaseLayoutProps {
@@ -23,10 +23,7 @@ export function baseOptions(): BaseLayoutProps {
         text: 'Email',
         label: 'Email',
         icon: (
-            <i className="fas fa-book-open" 
-            style={{ 
-              fontSize: '1rem', width: '24px', height: '24px', display: 'flex',
-               alignItems: 'center', justifyContent: 'center' }} />
+            <BookOpen className="w-5 h-5" />
         ),
         external: true,
       },
