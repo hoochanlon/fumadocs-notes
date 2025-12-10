@@ -1,6 +1,7 @@
 import { source } from '@/lib/source';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SiteFooter } from '@/components/site-footer';
 
 export default async function TagsPage() {
   const allPages = source.getPages();
@@ -40,7 +41,7 @@ export default async function TagsPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-12">
+      <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-14">
         <section className="w-full space-y-8">
           <div className="space-y-2">
             <h1 className="text-3xl font-semibold tracking-tight">所有标签</h1>
@@ -70,6 +71,7 @@ export default async function TagsPage() {
           )}
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

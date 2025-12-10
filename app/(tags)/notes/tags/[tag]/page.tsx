@@ -2,6 +2,7 @@ import { source } from '@/lib/source';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { SiteFooter } from '@/components/site-footer';
 
 export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
   const params = await props.params;
@@ -38,83 +39,88 @@ export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
   });
 
   return (
-    <section className="w-full">
-      <div className="flex items-baseline gap-3 mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">标签: {tagName}</h1>
-        <span className="text-sm font-normal text-fd-muted-foreground">
-          ({taggedPages.length} 篇文章)
-        </span>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-12">
+        <section className="w-full">
+          <div className="flex items-baseline gap-3 mb-8">
+            <h1 className="text-3xl font-semibold tracking-tight">标签: {tagName}</h1>
+            <span className="text-sm font-normal text-fd-muted-foreground">
+              ({taggedPages.length} 篇文章)
+            </span>
+          </div>
 
-      <div className="mb-8 flex flex-wrap gap-2">
-        <Link
-          href="/notes/tags"
-          className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
-        >
-          <i className="fa-solid fa-tags"></i>
-          返回所有标签
-        </Link>
-        <Link
-          href="/notes/essay"
-          className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
-        >
-          <i className="ri-booklet-line"></i>
-          返回备忘录
-        </Link>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {taggedPages.map((page) => {
-          const publishedAt =
-            page.data.publishedAt instanceof Date
-              ? page.data.publishedAt
-              : page.data.publishedAt
-                ? new Date(page.data.publishedAt)
-                : undefined;
-          const lastUpdated =
-            page.data.lastUpdated instanceof Date
-              ? page.data.lastUpdated
-              : page.data.lastUpdated
-                ? new Date(page.data.lastUpdated)
-                : undefined;
-
-          return (
+          <div className="mb-8 flex flex-wrap gap-2">
             <Link
-              key={page.url}
-              href={`/notes/${page.slugs && page.slugs.length > 0 ? page.slugs.join('/') : page.url}`}
-              className="group block p-6 rounded-xl border-2 border-fd-border bg-fd-card hover:border-fd-primary hover:bg-fd-primary/5 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1 no-underline"
+              href="/notes/tags"
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
             >
-              <h3 className="text-lg font-semibold text-fd-foreground group-hover:text-fd-primary transition-colors mb-2 line-clamp-2">
-                {page.data.title}
-              </h3>
-              {page.data.description && (
-                <p className="text-sm text-fd-muted-foreground mb-4 line-clamp-3">
-                  {page.data.description}
-                </p>
-              )}
-              {(publishedAt || lastUpdated) && (
-                <div className="flex flex-wrap items-center gap-3 text-xs text-fd-muted-foreground pt-3 border-top border-fd-border">
-                  {publishedAt && (
-                    <span className="inline-flex items-center gap-1.5">
-                      <i className="fa-solid fa-calendar-day text-fd-muted-foreground/60" />
-                      {publishedAt.toLocaleDateString('zh-CN')}
-                    </span>
-                  )}
-                  {lastUpdated &&
-                    publishedAt &&
-                    lastUpdated.getTime() !== publishedAt.getTime() && (
-                      <span className="inline-flex items-center gap-1.5">
-                        <i className="fa-regular fa-clock text-fd-muted-foreground/60" />
-                        {lastUpdated.toLocaleDateString('zh-CN')}
-                      </span>
-                    )}
-                </div>
-              )}
+              <i className="fa-solid fa-tags"></i>
+              返回所有标签
             </Link>
-          );
-        })}
-      </div>
-    </section>
+            <Link
+              href="/notes/essay"
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
+            >
+              <i className="ri-booklet-line"></i>
+              返回备忘录
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {taggedPages.map((page) => {
+              const publishedAt =
+                page.data.publishedAt instanceof Date
+                  ? page.data.publishedAt
+                  : page.data.publishedAt
+                    ? new Date(page.data.publishedAt)
+                    : undefined;
+              const lastUpdated =
+                page.data.lastUpdated instanceof Date
+                  ? page.data.lastUpdated
+                  : page.data.lastUpdated
+                    ? new Date(page.data.lastUpdated)
+                    : undefined;
+
+              return (
+                <Link
+                  key={page.url}
+                  href={`/notes/${page.slugs && page.slugs.length > 0 ? page.slugs.join('/') : page.url}`}
+                  className="group block p-6 rounded-xl border-2 border-fd-border bg-fd-card hover:border-fd-primary hover:bg-fd-primary/5 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1 no-underline"
+                >
+                  <h3 className="text-lg font-semibold text-fd-foreground group-hover:text-fd-primary transition-colors mb-2 line-clamp-2">
+                    {page.data.title}
+                  </h3>
+                  {page.data.description && (
+                    <p className="text-sm text-fd-muted-foreground mb-4 line-clamp-3">
+                      {page.data.description}
+                    </p>
+                  )}
+                  {(publishedAt || lastUpdated) && (
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-fd-muted-foreground pt-3 border-top border-fd-border">
+                      {publishedAt && (
+                        <span className="inline-flex items-center gap-1.5">
+                          <i className="fa-solid fa-calendar-day text-fd-muted-foreground/60" />
+                          {publishedAt.toLocaleDateString('zh-CN')}
+                        </span>
+                      )}
+                      {lastUpdated &&
+                        publishedAt &&
+                        lastUpdated.getTime() !== publishedAt.getTime() && (
+                          <span className="inline-flex items-center gap-1.5">
+                            <i className="fa-regular fa-clock text-fd-muted-foreground/60" />
+                            {lastUpdated.toLocaleDateString('zh-CN')}
+                          </span>
+                        )}
+                    </div>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }
 
