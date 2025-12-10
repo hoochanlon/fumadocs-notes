@@ -62,10 +62,28 @@ export default function NotesArchivePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-12">
-        <h1 className="text-3xl font-semibold tracking-tight mb-4">笔记归档</h1>
-        <p className="text-fd-muted-foreground mb-10">
-          按时间浏览全部笔记条目，方便快速跳转。
-        </p>
+        <h1 className="text-3xl font-semibold tracking-tight mb-4">归档</h1>
+        <div className="flex flex-col gap-4 mb-10">
+          <p className="text-fd-muted-foreground">
+            按时间浏览全部笔记条目，方便快速跳转。
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/notes/essay"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
+            >
+              <i className="ri-file-marked-fill"></i>
+              返回备忘录
+            </Link>
+            <Link
+              href="/notes/tags"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
+            >
+              <i className="fa-solid fa-tags" />
+              查看所有标签
+            </Link>
+          </div>
+        </div>
 
         <div className="space-y-12">
           {years.map((year) => (

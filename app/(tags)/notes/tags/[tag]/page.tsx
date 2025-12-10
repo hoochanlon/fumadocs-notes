@@ -55,14 +55,14 @@ export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
               className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
             >
               <i className="fa-solid fa-tags"></i>
-              返回所有标签
+              查看所有标签
             </Link>
             <Link
               href="/notes/essay"
               className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
             >
-              <i className="ri-booklet-line"></i>
-              返回备忘录
+              <i className="ri-file-marked-fill"></i>
+              返回笔记
             </Link>
           </div>
 

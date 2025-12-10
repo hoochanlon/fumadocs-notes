@@ -34,6 +34,7 @@ export default async function Page(props: PageProps<'/notes/[...slug]'>) {
       full={page.data.full}
       tableOfContent={{
         enabled: page.data.toc !== false
+        ,style: 'clerk'
       }}
       tableOfContentPopover={{
         enabled: page.data.toc !== false

@@ -43,9 +43,25 @@ export default async function TagsPage() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-14">
         <section className="w-full space-y-8">
-          <div className="space-y-2">
+          <div className="space-y-3">
             <h1 className="text-3xl font-semibold tracking-tight">所有标签</h1>
             <p className="text-fd-muted-foreground">浏览全部标签，快速跳转到相关笔记。</p>
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <Link
+                href="/notes/essay"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
+              >
+                <i className="ri-file-marked-fill"></i>
+                返回笔记
+              </Link>
+              <Link
+                href="/notes"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
+              >
+                <i className="fas fa-box-archive"></i>
+                查看归档
+              </Link>
+            </div>
           </div>
           {sortedTags.length === 0 ? (
             <div className="text-center py-12">

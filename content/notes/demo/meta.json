@@ -3,7 +3,7 @@
   "root": true,
   "pages": [
     "index",
-    "---导航分类---",
+    "---分隔内容---",
     "demo-1",
     "demo-2",
     "demo-3"
