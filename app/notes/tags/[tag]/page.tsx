@@ -144,10 +144,10 @@ export async function generateStaticParams() {
     }
   }
   
-  // 返回编码后的值，以匹配链接中的 encodeURIComponent
-  // 这样在开发和生产模式下都能正常工作
+  // 在静态导出模式下，Next.js 会自动处理 URL 编码
+  // 所以这里返回原始值，不要手动编码
   return Array.from(tagSet).map(tag => ({
-    tag: encodeURIComponent(tag),
+    tag: tag,
   }));
 }
 
