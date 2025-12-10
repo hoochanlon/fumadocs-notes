@@ -167,3 +167,37 @@ export async function getLLMText(page: InferPageType<typeof source>) {
 
 ${processed}`;
 }
+
+/**
+ * 获取所有标签及其对应的文章数量
+ */
+export function getAllTags() {
+  const tagsMap = new Map<string, number>();
+  
+  // 遍历所有页面
+  const pages = source.getPages();
+  for (const page of pages) {
+    const tags = (page.data as { tags?: string[] }).tags;
+    if (tags && Array.isArray(tags)) {
+      for (const tag of tags) {
+        tagsMap.set(tag, (tagsMap.get(tag) || 0) + 1);
+      }
+    }
+  }
+  
+  // 转换为数组并按标签名排序
+  return Array.from(tagsMap.entries())
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => a.tag.localeCompare(b.tag, 'zh-CN'));
+}
+
+/**
+ * 根据标签获取所有相关页面
+ */
+export function getPagesByTag(tag: string) {
+  const pages = source.getPages();
+  return pages.filter((page) => {
+    const tags = (page.data as { tags?: string[] }).tags;
+    return tags && Array.isArray(tags) && tags.includes(tag);
+  });
+}

@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
+import Link from 'next/link';
 
 export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
   const params = await props.params;
@@ -60,6 +61,21 @@ export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
         </p>
       )}
       <DocsDescription>{page.data.description}</DocsDescription>
+      {(page.data as { tags?: string[] }).tags && 
+       Array.isArray((page.data as { tags?: string[] }).tags) && 
+       (page.data as { tags?: string[] }).tags!.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-4 mb-6">
+          {(page.data as { tags?: string[] }).tags!.map((tag) => (
+            <Link
+              key={tag}
+              href={`/notes/tags/${encodeURIComponent(tag)}`}
+              className="inline-flex items-center px-3 py-1 rounded-md text-sm bg-fd-accent text-fd-accent-foreground hover:bg-fd-accent/80 transition-colors no-underline"
+            >
+              # {tag}
+            </Link>
+          ))}
+        </div>
+      )}
       <DocsBody>
         <MDX
           components={getMDXComponents({
