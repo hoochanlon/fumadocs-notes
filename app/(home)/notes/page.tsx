@@ -76,6 +76,9 @@ export default function NotesArchivePage() {
                   href={item.href}
                   className="group block p-5 rounded-xl border-2 border-fd-border bg-fd-card hover:border-fd-primary hover:bg-fd-primary/5 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1 no-underline"
                 >
+                  <h3 className="text-lg font-semibold text-fd-foreground group-hover:text-fd-primary transition-colors line-clamp-2 mb-2">
+                    {item.title}
+                  </h3>
                   <div className="flex items-center gap-3 mb-2 min-h-[20px]">
                     {item.dateLabel && (
                       <span className="inline-flex items-center gap-1.5 text-xs text-fd-muted-foreground">
@@ -84,9 +87,6 @@ export default function NotesArchivePage() {
                       </span>
                     )}
                   </div>
-                  <h3 className="text-lg font-semibold text-fd-foreground group-hover:text-fd-primary transition-colors line-clamp-2">
-                    {item.title}
-                  </h3>
                   {item.description && (
                     <p className="text-sm text-fd-muted-foreground mt-2 line-clamp-3">
                       {item.description}

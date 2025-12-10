@@ -1,7 +1,11 @@
 import { createMDX } from 'fumadocs-mdx/next';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+// ESM 等价的 __dirname
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const withMDX = createMDX();
-
 
 // 开发默认根路径；生产（或设置了 NEXT_PUBLIC_BASE_PATH）走子路径
 const basePath =
@@ -35,16 +39,10 @@ const config = {
       },
     ],
   },
-  // 开发服务器性能优化
+  // 为 Turbopack 指定根目录，避免根目录推断警告
   ...(process.env.NODE_ENV === 'development' && {
-    // 减少开发时的编译范围
-    experimental: {
-      // 优化 Turbopack 性能（如果使用）
-      turbo: {
-        resolveAlias: {
-          // 可以添加别名优化
-        },
-      },
+    turbopack: {
+      root: __dirname,
     },
   }),
 };
