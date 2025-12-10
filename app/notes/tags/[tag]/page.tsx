@@ -21,14 +21,32 @@ export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
     tagName = params.tag;
   }
   
-  // 获取所有页面
-  const allPages = source.getPages();
+  // 获取所有页面，添加错误处理
+  let allPages;
+  try {
+    allPages = source.getPages();
+  } catch (error) {
+    console.error('Error getting pages:', error);
+    // 如果获取页面失败，返回 404
+    notFound();
+  }
+  
+  // 确保 allPages 是数组
+  if (!Array.isArray(allPages)) {
+    console.error('source.getPages() did not return an array:', allPages);
+    notFound();
+  }
   
   // 筛选包含该标签的页面
   const taggedPages = allPages.filter(page => {
-    const tags = (page.data as any).tags;
-    if (!tags || !Array.isArray(tags)) return false;
-    return tags.some(tag => String(tag) === tagName);
+    try {
+      const tags = (page.data as any).tags;
+      if (!tags || !Array.isArray(tags)) return false;
+      return tags.some(tag => String(tag) === tagName);
+    } catch (error) {
+      console.error('Error filtering page:', error, page);
+      return false;
+    }
   });
   
   if (taggedPages.length === 0) {
@@ -132,23 +150,39 @@ export default async function TagPage(props: PageProps<'/notes/tags/[tag]'>) {
 }
 
 export async function generateStaticParams() {
-  const allPages = source.getPages();
-  const tagSet = new Set<string>();
-  
-  for (const page of allPages) {
-    const tags = (page.data as any).tags;
-    if (tags && Array.isArray(tags)) {
-      for (const tag of tags) {
-        tagSet.add(String(tag));
+  try {
+    const allPages = source.getPages();
+    
+    // 确保 allPages 是数组
+    if (!Array.isArray(allPages)) {
+      console.warn('source.getPages() did not return an array in generateStaticParams');
+      return [];
+    }
+    
+    const tagSet = new Set<string>();
+    
+    for (const page of allPages) {
+      try {
+        const tags = (page.data as any).tags;
+        if (tags && Array.isArray(tags)) {
+          for (const tag of tags) {
+            tagSet.add(String(tag));
+          }
+        }
+      } catch (error) {
+        console.error('Error processing page in generateStaticParams:', error, page);
       }
     }
+    
+    // 在静态导出模式下，Next.js 会自动处理 URL 编码
+    // 所以这里返回原始值，不要手动编码
+    return Array.from(tagSet).map(tag => ({
+      tag: tag,
+    }));
+  } catch (error) {
+    console.error('Error in generateStaticParams:', error);
+    return [];
   }
-  
-  // 在静态导出模式下，Next.js 会自动处理 URL 编码
-  // 所以这里返回原始值，不要手动编码
-  return Array.from(tagSet).map(tag => ({
-    tag: tag,
-  }));
 }
 
 export async function generateMetadata(
@@ -162,16 +196,37 @@ export async function generateMetadata(
     tagName = params.tag;
   }
   
-  const allPages = source.getPages();
-  const taggedPages = allPages.filter(page => {
-    const tags = (page.data as any).tags;
-    if (!tags || !Array.isArray(tags)) return false;
-    return tags.some(tag => String(tag) === tagName);
-  });
-  
-  return {
-    title: `标签: ${tagName}`,
-    description: `包含标签 "${tagName}" 的 ${taggedPages.length} 篇文章`,
-  };
+  try {
+    const allPages = source.getPages();
+    
+    // 确保 allPages 是数组
+    if (!Array.isArray(allPages)) {
+      return {
+        title: `标签: ${tagName}`,
+        description: `包含标签 "${tagName}" 的文章`,
+      };
+    }
+    
+    const taggedPages = allPages.filter(page => {
+      try {
+        const tags = (page.data as any).tags;
+        if (!tags || !Array.isArray(tags)) return false;
+        return tags.some(tag => String(tag) === tagName);
+      } catch {
+        return false;
+      }
+    });
+    
+    return {
+      title: `标签: ${tagName}`,
+      description: `包含标签 "${tagName}" 的 ${taggedPages.length} 篇文章`,
+    };
+  } catch (error) {
+    console.error('Error in generateMetadata:', error);
+    return {
+      title: `标签: ${tagName}`,
+      description: `包含标签 "${tagName}" 的文章`,
+    };
+  }
 }
 

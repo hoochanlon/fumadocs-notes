@@ -11,8 +11,9 @@ const basePath =
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
-  // 启用静态导出模式
-  output: 'export',
+  // 只在生产环境启用静态导出模式
+  // 开发环境不使用静态导出，以支持动态路由
+  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
   // GitHub Pages 子路径配置
   // 在静态导出模式下，basePath 会自动处理所有资源路径
   basePath,
