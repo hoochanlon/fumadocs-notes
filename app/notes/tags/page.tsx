@@ -80,7 +80,7 @@ export default async function TagsPage() {
                 className="group relative inline-flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-fd-border bg-fd-card text-fd-card-foreground hover:border-fd-primary hover:bg-fd-primary/10 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 no-underline"
               >
                 <span className="font-semibold text-base text-fd-foreground group-hover:text-fd-primary transition-colors">
-                  {tag}
+                  # {tag}
                 </span>
                 <span className="inline-flex items-center justify-center min-w-[28px] h-7 px-2 text-xs font-bold rounded-full bg-fd-primary/20 text-fd-primary group-hover:bg-fd-primary group-hover:text-fd-primary-foreground transition-colors">
                   {pages.length}

@@ -72,7 +72,7 @@ export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
                 href={`/notes/tags/${encodeURIComponent(tagName)}`}
                 className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md bg-fd-muted text-fd-muted-foreground hover:bg-fd-accent hover:text-fd-accent-foreground transition-colors no-underline"
               >
-                {tagName}
+                # {tagName}
               </Link>
             );
           })}
