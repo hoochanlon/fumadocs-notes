@@ -133,14 +133,6 @@ button[aria-controls^="radix-"] {
 }
 
 
-/* 导航栏标题样式 */
-.nav-title-link {
-  font-family: var(--font-quicksand), 'Quicksand', 'Inter', 'Helvetica', 'Arial', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
 /* 目录 */
 #toc-title:after {
   content: "目录";
@@ -169,7 +161,7 @@ button[aria-controls^="radix-"] {
 
 
 
-/* 精确匹配整个class字符串 */
+/* 精确匹配整个class字符串，导航栏标题 */
 a[class="inline-flex items-center gap-2.5 font-semibold"] {
   font-family: 'quicksand';
   font-size: 20px;

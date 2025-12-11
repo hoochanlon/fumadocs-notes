@@ -40,11 +40,9 @@ const config = {
     ],
   },
   // 为 Turbopack 指定根目录，避免根目录推断警告
-  ...(process.env.NODE_ENV === 'development' && {
-    turbopack: {
-      root: __dirname,
-    },
-  }),
+  turbopack: {
+    root: __dirname,
+  },
 };
 
 export default withMDX(config);
