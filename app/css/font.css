@@ -36,7 +36,7 @@ h4 {
 }
 
 /* 段落样式 */
-li,p, span {
+li,p, span,code,pre {
   font-size: var(--base-size);
   line-height: 1.8;
 }
