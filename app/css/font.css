@@ -1,3 +1,8 @@
+#nd-nav{
+  font-size: 24px;
+  font-family: var(--font-quicksand), 'Quicksand', 'Inter', 'Helvetica', sans-serif;
+}
+
 :root {
   --font-noto-serif-sc: 'Noto Sans SC', 'Songti SC', '宋体', serif;
   --font-quicksand: 'Quicksand', 'Inter', 'Helvetica', 'Arial', sans-serif;
