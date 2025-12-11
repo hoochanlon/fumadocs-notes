@@ -1,11 +1,19 @@
+@import url('https://fonts.loli.net/css2?family=Noto+Sans+SC&display=swap');
+@import url('https://fonts.loli.net/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+:root {
+  --font-noto-serif-sc: 'Noto Sans SC', 'Songti SC', '宋体', serif;
+  --font-quicksand: 'Quicksand', 'Inter', 'Helvetica', 'Arial', sans-serif;
+}
+
 h1[class="text-3xl md:text-5xl font-bold tracking-tight text-gray-400 dark:text-gray-400"] {
-  font-family: 'Quicksand', sans-serif;
+  font-family: var(--font-quicksand);
   font-size: 50px;
 }
 
 /* 使用 CSS 变量 */
 h1, h2, h3, h4, h5, h6, p, span, div {
-  font-family: var(--font-noto-serif-sc), 'Noto Serif SC', '宋体', serif;
+  font-family: var(--font-noto-serif-sc);
 }
 
 /* √2 比例 - 更适合中文 */
@@ -124,7 +132,7 @@ button[aria-controls^="radix-"] {
 }
 
 .site-footer * {
-  font-family: var(--font-quicksand), 'Quicksand', sans-serif !important;
+  font-family: var(--font-quicksand) !important;
 }
 
 
