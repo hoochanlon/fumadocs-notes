@@ -1,9 +1,3 @@
-@import '@fontsource/noto-sans-sc/400.css';
-@import '@fontsource/noto-sans-sc/500.css';
-@import '@fontsource/noto-sans-sc/700.css';
-@import '@fontsource/quicksand/400.css';
-@import '@fontsource/quicksand/600.css';
-@import '@fontsource/quicksand/700.css';
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/ocean.css';
 @import 'fumadocs-ui/css/preset.css';
