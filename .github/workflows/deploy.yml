@@ -43,7 +43,7 @@ jobs:
 
       # 显式执行静态导出，确保 ./out 生成完整静态站点（含中文路径）
       - name: Export static site
-        run: pnpm export
+        run: pnpm run export
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
