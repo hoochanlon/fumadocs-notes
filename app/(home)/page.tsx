@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       {/* 英雄区域 */}
-      <section className="flex flex-col items-center justify-center py-12 px-4 text-center flex-1">
+      <section className="flex flex-col items-center justify-center pt-8 pb-10 md:pt-12 md:pb-12 px-4 text-center flex-1">
         {/* 头像图片 */}
         <motion.div 
           className="flex justify-center mb-8"
