@@ -37,7 +37,7 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-gray-600 dark:to-gray-400 font-tesla">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-400 dark:text-gray-400">
             Hoochanlon's Memos
           </h1>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">

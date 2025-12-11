@@ -1,14 +1,30 @@
 import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
+import { Callout } from 'fumadocs-ui/components/callout';
 import defaultComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import { TypeTable } from 'fumadocs-ui/components/type-table';
+import { cn } from 'fumadocs-ui/utils/cn';
 import { Mermaid } from '@/components/mdx/mermaid';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ...defaultComponents,
     ...TabsComponents,
+    // 调整 Callout：根据是否有标题分别控制内边距/行距/图标垂直偏移
+    Callout: ({ className, title, ...rest }) => {
+      const hasTitle = Boolean(title);
+      const body = hasTitle
+        ? 'my-3 py-2.5 [&_svg]:my-0 [&_svg]:mt-1.5'
+        : '[&>div:last-child]:my-0';
+      return (
+        <Callout
+          {...rest}
+          title={title}
+          className={cn(body, className)}
+        />
+      );
+    },
     Mermaid,
     img: (props: any) => {
       // 如果没有 width 或 height，提供默认值

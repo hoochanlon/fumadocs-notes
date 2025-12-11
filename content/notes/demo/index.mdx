@@ -35,49 +35,9 @@ import { buildGraph } from '@/lib/build-graph';
 }
 ```
 
-## 导入所有组件
+## 手风琴显示
 
-```ts
-import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
-import { Banner } from 'fumadocs-ui/components/banner';
-import { File, Folder, Files } from 'fumadocs-ui/components/files';
-import { GithubInfo } from 'fumadocs-ui/components/github-info';
-import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
-import { Step, Steps } from 'fumadocs-ui/components/steps';
-import { TypeTable } from 'fumadocs-ui/components/type-table';
-import { HomeIcon } from 'lucide-react';
-import { GraphView } from '@/components/graph-view';
-import { buildGraph } from '@/lib/build-graph';
-```
-
-## 横幅
-
-```
-import { Banner } from 'fumadocs-ui/components/banner';
-
-<Banner variant="rainbow">Hello World</Banner>
-```
-
-当有横幅时，不管横幅在哪个位置，都会挤占 nav 的空间
-
-## 内联目录
-
-<InlineTOC items={toc} />
-
-
-## 手风琴折叠内容
-
-<Accordions>
-<Accordion title="My Title" id="my-title">
-
-My Content
-
-</Accordion>
-</Accordions>
-
-
-## 文件夹显示
-
+文件夹组件
 
 <Files>
   <Folder name="app" defaultOpen>
@@ -93,50 +53,24 @@ My Content
   <File name="package.json" />
 </Files>
 
+内容折叠
 
-## github 仓库信息
+<Accordions>
+<Accordion title="My Title" id="my-title">
 
-<GithubInfo
-  owner="hoochanlon"
-  repo="hoochanlon"
-/>
+My Content
+
+</Accordion>
+</Accordions>
 
 
 
+## 步骤
 
 <Steps>
 <Step>
 
-### Hello World
-
-</Step>
-
-<Step>
-
-### Hello World
-
-</Step>
-</Steps>
-
-
-## 定位栏
-
-<Tabs items={['Javascript', 'Rust', 'C++']}>
-  <Tab value="Javascript">Javascript is weird</Tab>
-  <Tab value="Rust">Rust is fast</Tab>
-  <Tab id="tab-cpp" value="C++">
-    `Hello World`
-  </Tab>
-</Tabs>
-
-## 图片放大镜
-
-![](https://images.sonurai.com/SaltDesert.jpg)
-
-
-![](https://cdn.jsdelivr.net/gh/hoochanlon/picx-images-hosting@refs/heads/master/special/hello.png)
-
-## 数学公式
+### 数学公式
 
 Inline: $$c = \pm\sqrt{a^2 + b^2}$$
 
@@ -144,28 +78,11 @@ Inline: $$c = \pm\sqrt{a^2 + b^2}$$
 c = \pm\sqrt{a^2 + b^2}
 ```
 
+</Step>
 
-## 提示框
+<Step>
 
-
-<Callout>Hello World</Callout>
-
-<Callout title="Title">Hello World</Callout>
-
-<Callout title="Title" type="error">Hello World</Callout>
-
-
-## 卡片
-
-
-<Cards>
-  <Card icon={<HomeIcon />} href="/" title="Home">
-    You can include icons too.
-  </Card>
-</Cards>
-
-
-## 图表
+### 图表
 
 
 <Mermaid
@@ -189,6 +106,52 @@ Z --> E;
 Z --> F;
 Z --> G;"
 />
+
+
+</Step>
+</Steps>
+
+
+
+
+
+## 定位栏
+
+<Tabs items={['Javascript', 'Rust', 'C++']}>
+  <Tab value="Javascript">Javascript is weird</Tab>
+  <Tab value="Rust">Rust is fast</Tab>
+  <Tab id="tab-cpp" value="C++">
+    `Hello World`
+  </Tab>
+</Tabs>
+
+
+
+## 提示框
+
+
+<Callout>Hello World</Callout>
+
+<Callout title="标题">Hello World</Callout>
+
+<Callout title="Title" type="error">Hello World</Callout>
+
+
+<Callout title="Title" type="warning">
+  Hello World
+</Callout>
+
+
+## 卡片
+
+
+<Cards>
+  <Card icon={<HomeIcon />} href="/" title="Home">
+    You can include icons too.
+  </Card>
+</Cards>
+
+
 
 
 ## 代码块
@@ -251,3 +214,11 @@ function calculateTotal(items) {
 ## GraphView 
 
 <GraphView graph={buildGraph()} />
+
+
+## 图片放大镜
+
+该图片没有采用自适应
+
+![](https://4kwallpapers.com/images/walls/thumbs_3t/24655.jpg)
+

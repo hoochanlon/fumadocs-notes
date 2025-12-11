@@ -3,9 +3,9 @@ import { FileText, Github } from 'lucide-react';
 
 export function SiteFooter() {
   return (
-    <footer className="py-4 px-4 border-t border-border">
+    <footer className="py-3 px-4 border-t border-border">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-        <div className="text-muted-foreground text-sm">
+        <div className="text-muted-foreground text-[18px] leading-snug">
           © {new Date().getFullYear()} Hoochanlon
         </div>
         <div className="flex items-center gap-5">
