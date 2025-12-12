@@ -1,8 +1,8 @@
 ---
 title: 效果演示
 description: 演示各组件与文档效果示例
-publishedAt: 2025-12-10
-tags: [效果展示]
+publishedAt: 2025-12-11
+tags: [内容展示]
 ---
 
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
@@ -72,11 +72,36 @@ My Content
 
 ### 数学公式
 
+在您的文档中输入一些 TeX 表达式，例如勾股定理：
+
+````mdx
 Inline: $$c = \pm\sqrt{a^2 + b^2}$$
 
 ```math
 c = \pm\sqrt{a^2 + b^2}
 ```
+````
+
+行内公式：$$c = \pm\sqrt{a^2 + b^2}$$
+
+```math
+c = \pm\sqrt{a^2 + b^2}
+```
+
+泰勒展开（将全纯函数 $$f(x)$$ 表示为幂级数）：
+
+```math
+\displaystyle {\begin{aligned}T_{f}(z)&=\sum _{k=0}^{\infty }{\frac {(z-c)^{k}}{2\pi i}}\int _{\gamma }{\frac {f(w)}{(w-c)^{k+1}}}\,dw\\&={\frac {1}{2\pi i}}\int _{\gamma }{\frac {f(w)}{w-c}}\sum _{k=0}^{\infty }\left({\frac {z-c}{w-c}}\right)^{k}\,dw\\&={\frac {1}{2\pi i}}\int _{\gamma }{\frac {f(w)}{w-c}}\left({\frac {1}{1-{\frac {z-c}{w-c}}}}\right)\,dw\\&={\frac {1}{2\pi i}}\int _{\gamma }{\frac {f(w)}{w-z}}\,dw=f(z),\end{aligned}}
+```
+
+<Callout title="Tip">
+  You can actually copy equations on Wikipedia, they will be converted into a KaTeX string when you paste it.
+
+  ```math
+  \displaystyle S[{\boldsymbol {q}}]=\int _{a}^{b}L(t,{\boldsymbol {q}}(t),{\dot {\boldsymbol {q}}}(t))\,dt.
+  ```
+</Callout>
+
 
 </Step>
 
@@ -221,4 +246,6 @@ function calculateTotal(items) {
 该图片没有采用自适应
 
 ![](https://4kwallpapers.com/images/walls/thumbs_3t/24655.jpg)
+
+
 

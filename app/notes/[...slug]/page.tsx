@@ -10,7 +10,7 @@ import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import Link from 'next/link';
-import { CalendarDays, Clock3 } from 'lucide-react';
+import { CalendarDays, Clock3, PenLine } from 'lucide-react';
 
 export default async function Page(props: PageProps<'/notes/[...slug]'>) {
   const params = await props.params;
@@ -28,6 +28,9 @@ export default async function Page(props: PageProps<'/notes/[...slug]'>) {
     : page.data.publishedAt
       ? new Date(page.data.publishedAt)
       : undefined;
+  
+  // 检查 frontmatter 中是否禁用编辑按钮，默认为 true（显示）
+  const editOnGitHub = (page.data as any).editOnGitHub !== false;
 
   return (
     <DocsPage 
@@ -45,7 +48,7 @@ export default async function Page(props: PageProps<'/notes/[...slug]'>) {
       }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
-      {(publishedAt || lastUpdated) && (
+      <div className="flex flex-wrap items-center gap-2">
         <p className="text-[15px] leading-6 text-fd-muted-foreground flex flex-wrap items-center gap-2">
           {publishedAt && (
             <span className="inline-flex items-center gap-1">
@@ -60,8 +63,20 @@ export default async function Page(props: PageProps<'/notes/[...slug]'>) {
               最近更新：{lastUpdated.toLocaleDateString('zh-CN')}
             </span>
           )}
+          {editOnGitHub && (publishedAt || lastUpdated) && <span className="mx-1">|</span>}
+          {editOnGitHub && (
+            <a
+              href={`https://github.dev/hoochanlon/memos/blob/main/content/notes/${page.path}`}
+              rel="noreferrer noopener"
+              target="_blank"
+              className="text-[15px] leading-6 text-fd-muted-foreground flex flex-wrap items-center gap-2"
+            >
+              <PenLine className="w-4 h-4" />
+              在 GitHub 上编辑
+            </a>
+          )}
         </p>
-      )}
+      </div>
       {(page.data as any).tags && Array.isArray((page.data as any).tags) && (page.data as any).tags.length > 0 && (
         <div className="flex flex-wrap items-center gap-2 mt-2 text-[15px] leading-6 text-fd-muted-foreground">
           <span>标签：</span>
